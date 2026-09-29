@@ -1,0 +1,142 @@
+:root {
+  --bg: #fbf6ef;
+  --ink: #4f364b;
+  --muted: #8a7486;
+  --panel: rgba(255, 255, 255, 0.72);
+  --ring: #db3e1d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1620;
+    --ink: #f4e9ef;
+    --muted: #b7a3b3;
+    --panel: rgba(40, 28, 42, 0.72);
+    --ring: #f4af30;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+.toolbar {
+  position: fixed;
+  inset: 16px 16px auto 16px;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(79, 54, 75, 0.12);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+
+.palette {
+  display: flex;
+  gap: 6px;
+}
+
+.swatch {
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.swatch img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.swatch:hover { transform: scale(1.1); }
+.swatch[aria-checked="true"] { border-color: var(--ring); }
+.swatch:focus-visible, .text-btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.text-btn {
+  padding: 8px 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.text-btn:hover { background: rgba(127, 127, 127, 0.12); }
+
+#garden {
+  position: fixed;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(90vw, 420px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.hint.hidden { opacity: 0; }
+
+#garden canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 560px) {
+  .toolbar { justify-content: center; }
+  h1 { width: 100%; text-align: center; }
+}

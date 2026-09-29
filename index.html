@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flower Playground</title>
+  <link rel="icon" href="flowers/flower-2.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <h1>Flower Playground</h1>
+    <div class="palette" role="radiogroup" aria-label="Pick a flower">
+      <button class="swatch" role="radio" aria-checked="false" data-flower="random" title="Surprise me">?</button>
+      <button class="swatch" role="radio" aria-checked="false" data-flower="1" title="Plum &amp; ember"><img src="flowers/flower-1.svg" alt="Plum flower"></button>
+      <button class="swatch" role="radio" aria-checked="false" data-flower="2" title="Rose &amp; marigold"><img src="flowers/flower-2.svg" alt="Rose flower"></button>
+      <button class="swatch" role="radio" aria-checked="false" data-flower="3" title="Poppy &amp; sage"><img src="flowers/flower-3.svg" alt="Poppy flower"></button>
+      <button class="swatch" role="radio" aria-checked="false" data-flower="4" title="Blush &amp; lilac"><img src="flowers/flower-4.svg" alt="Blush flower"></button>
+    </div>
+    <div class="actions">
+      <span class="count" aria-live="polite"><span id="count">0</span> flowers</span>
+      <button id="drop" class="text-btn">Drop more</button>
+      <button id="shake" class="text-btn">Shake</button>
+      <button id="clear" class="text-btn">Clear</button>
+    </div>
+  </header>
+
+  <main id="garden" aria-label="Garden. Click empty space to drop a flower; drag flowers to fling them.">
+    <p class="hint" id="hint">Click anywhere to drop a flower, or drag flowers around and fling them.</p>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
